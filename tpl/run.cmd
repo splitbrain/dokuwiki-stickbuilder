@@ -11,7 +11,7 @@ goto end
 :begin
 if not "%1"=="" goto usage
 cd server
-start "Apache server" /B httpd.exe
+start "Apache server" /B mapache.exe
 echo DokuWiki on a Stick started...
 echo.
  
@@ -29,6 +29,7 @@ echo To stop DokuWiki on a Stick
 pause
  
 :stop
+ApacheKill.exe
 echo ... DokuWiki on a Stick stopped.
 echo You can close this window now.
  

@@ -46,7 +46,7 @@ cd ..
 
 # copy stuff
 cp tmp/apache/LICENSE.txt                   out/server/apache-license.txt
-cp tmp/apache/bin/httpd.exe                 out/server/
+cp tmp/apache/bin/httpd.exe                 out/server/mapache.exe
 cp tmp/apache/bin/libapr-1.dll              out/server/
 cp tmp/apache/bin/libapriconv-1.dll         out/server/
 cp tmp/apache/bin/libaprutil-1.dll          out/server/
