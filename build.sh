@@ -12,7 +12,6 @@ fi
 mkdir -p tmp
 mkdir -p out
 mkdir -p out/server
-mkdir -p out/server/logs
 mkdir -p out/server/modules
 mkdir -p out/server/php
 mkdir -p out/server/php/ext
