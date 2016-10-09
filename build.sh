@@ -1,7 +1,7 @@
 #!/bin/bash
 
 APACHE_ZIP="https://www.apachelounge.com/download/VC11/binaries/httpd-2.4.23-win32-VC11.zip"
-PHP_ZIP="http://windows.php.net/downloads/releases/php-5.6.25-Win32-VC11-x86.zip"
+PHP_ZIP="http://windows.php.net/downloads/releases/php-5.6.26-Win32-VC11-x86.zip"
 
 # clean up
 if [ -d "out" ]; then
