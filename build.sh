@@ -1,7 +1,12 @@
 #!/bin/bash
 
-APACHE_ZIP="https://www.apachelounge.com/download/VC11/binaries/httpd-2.4.23-win32-VC11.zip"
-PHP_ZIP="http://windows.php.net/downloads/releases/php-5.6.26-Win32-VC11-x86.zip"
+APACHE_ZIP="https://www.apachelounge.com/download/VC11/binaries/httpd-2.4.25-win32-VC11.zip"
+PHP_ZIP="http://windows.php.net/downloads/releases/php-5.6.30-Win32-VC11-x86.zip"
+
+if [ -d "tmp" ]; then
+    echo "WARNING: tmp exist, previous downloads will be used. Abort and delete tmp for fresh sources."
+    read
+fi
 
 # clean up
 if [ -d "out" ]; then
