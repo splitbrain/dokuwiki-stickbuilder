@@ -3,6 +3,14 @@
 APACHE_ZIP="https://www.apachelounge.com/download/VC11/binaries/httpd-2.4.25-win32-VC11.zip"
 PHP_ZIP="http://windows.php.net/downloads/releases/php-5.6.30-Win32-VC11-x86.zip"
 
+# an up-to-date upx is preferable now that development has started again
+if [ ! -e "./upx" ]; then
+    echo "Please place an up-to-date upx binary in this directory"
+    echo "See https://github.com/upx/upx/releases/"
+    exit
+fi
+
+# we use previously downloaded files, but we warn about it
 if [ -d "tmp" ]; then
     echo "WARNING: tmp exist, previous downloads will be used. Abort and delete tmp for fresh sources."
     read
@@ -78,9 +86,8 @@ cp tmp/php/ext/php_openssl.dll              out/server/php/ext/
 cp tmp/php/ext/php_pdo_sqlite.dll           out/server/php/ext/
 
 # compress files
-upx out/server/*.dll
-upx out/server/*.exe
-upx out/server/modules/*.so
-upx out/server/php/php5ts.dll
-upx out/server/php/ext/*.dll
+./upx out/server/*.dll
+./upx out/server/*.exe
+./upx out/server/modules/*.so
+./upx out/server/php/ext/*.dll
 
