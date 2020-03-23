@@ -45,14 +45,14 @@ fi
 if [ -d "tmp/php" ]; then
     rm -rf tmp/php
 fi
-cd tmp
+cd tmp || exit
     unzip apache.zip
     mv Apache[0-9][0-9] apache
     rm -f ReadMe.txt
     rm -f -- --*
 
     mkdir php
-    cd php
+    cd php || exit
     unzip ../php.zip
     cd ..
 cd ..
