@@ -81,7 +81,9 @@ cp tmp/php/php5ts.dll                       out/server/php/
 cp tmp/php/ssleay32.dll                     out/server/php/
 cp tmp/php/ext/php_bz2.dll                  out/server/php/ext/
 cp tmp/php/ext/php_gd2.dll                  out/server/php/ext/
+cp tmp/php/ext/php_ldap.dll                 out/server/php/ext/
 cp tmp/php/ext/php_mbstring.dll             out/server/php/ext/
+cp tmp/php/ext/php_opcache.dll              out/server/php/ext/
 cp tmp/php/ext/php_openssl.dll              out/server/php/ext/
 cp tmp/php/ext/php_pdo_sqlite.dll           out/server/php/ext/
 
