@@ -143,5 +143,5 @@ done
 ./upx out/server/*.dll
 ./upx out/server/*.exe
 ./upx out/server/modules/*.so
-./upx out/server/php/ext/*.dll
+ls out/server/php/ext/* | grep -vE 'mbstring|opcache' | xargs ./upx
 
