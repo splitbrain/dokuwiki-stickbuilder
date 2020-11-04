@@ -11,3 +11,7 @@ form for the maintainers.
 
 The script creates the server part only. It needs to be completed by placing
 a "dokuwiki" folder in the root dir.
+
+Note: you can get a Win10 VM directly from Microsoft for testing:
+
+    wget https://aka.ms/windev_VM_virtualbox

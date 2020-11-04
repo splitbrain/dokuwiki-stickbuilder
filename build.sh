@@ -43,10 +43,19 @@ function copyruntimelibs() {
 
 # an up-to-date upx is preferable now that development has started again
 if [ ! -e "./upx" ]; then
-    echo "Please place an up-to-date upx binary in this directory"
-    echo "See https://github.com/upx/upx/releases/"
+    echo "Please place an up-to-date upx binary (Version 4) in this directory"
+    echo "See https://github.com/upx/upx/releases/ or "
+    echo "https://github.com/upx/upx-automatic-builds/branches"
     exit
 fi
+
+if [ $(./upx -V |head -n 1|cut -c 5) != 4 ]; then
+    echo "Version 4 of UPX is needed. You probably need a devel release"
+    echo "See https://github.com/upx/upx-automatic-builds/branches"
+    exit
+fi
+
+
 
 if ! command -v cabextract >/dev/null 2>&1; then
     echo "Please install the cabextract utility"
@@ -62,6 +71,7 @@ fi
 # we use previously downloaded files, but we warn about it
 if [ -d "tmp" ]; then
     echo "WARNING: tmp exist, previous downloads will be used. Abort and delete tmp for fresh sources."
+    echo -n "[Enter]"
     read
 fi
 
@@ -141,7 +151,7 @@ for EXT in $PHP_EXTENSIONS; do
 done
 
 # compress files
-ls out/server/*.dll | grep -viE 'vcruntime|php7ts|libsasl|msvcp140' | xargs ./upx
+./upx out/server/*.dll
 ./upx out/server/*.exe
 ./upx out/server/modules/*.so
-
+./upx out/server/php/ext/*
