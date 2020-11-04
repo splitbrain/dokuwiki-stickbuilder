@@ -5,7 +5,7 @@ PHP_ZIP="https://windows.php.net/downloads/releases/php-7.4.12-Win32-vc15-x86.zi
 VC_EXE="https://aka.ms/vs/16/release/VC_redist.x86.exe"
 
 APACHE_MODULES="access_compat authz_core dir env log_config mime rewrite setenvif"
-PHP_EXTENSIONS="bz2 exif gd2 intl ldap mbstring opcache openssl pdo_sqlite"
+PHP_EXTENSIONS="bz2 gd2 ldap mbstring opcache openssl pdo_sqlite"
 
 # Try to identify the DLLs that the given binary needs and copy them from
 # the VC redistributable and the binary's own folder. Check dpendencies of
@@ -21,6 +21,7 @@ function copyruntimelibs() {
 
     SRC=$1
     SELF=$(dirname "$SRC")
+    echo "checking dependencies for $SRC"
 
     for DLL in $(objdump --private-headers "$SRC" |grep 'DLL Name'|awk '{print $3}'); do
         LC=$(echo "$DLL" | tr '[:upper:]' '[:lower:]')
@@ -140,8 +141,7 @@ for EXT in $PHP_EXTENSIONS; do
 done
 
 # compress files
-./upx out/server/*.dll
+ls out/server/*.dll | grep -viE 'vcruntime|php7ts|libsasl|msvcp140' | xargs ./upx
 ./upx out/server/*.exe
 ./upx out/server/modules/*.so
-ls out/server/php/ext/* | grep -vE 'mbstring|opcache' | xargs ./upx
 
