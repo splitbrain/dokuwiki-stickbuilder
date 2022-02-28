@@ -1,7 +1,7 @@
 #!/bin/bash
 
-APACHE_ZIP="https://www.apachelounge.com/download/VS16/binaries/httpd-2.4.46-win32-VS16.zip"
-PHP_ZIP="https://windows.php.net/downloads/releases/php-7.4.12-Win32-vc15-x86.zip"
+APACHE_ZIP="https://www.apachelounge.com/download/VS16/binaries/httpd-2.4.52-win32-VS16.zip"
+PHP_ZIP="https://windows.php.net/downloads/releases/php-7.4.28-Win32-vc15-x86.zip"
 VC_EXE="https://aka.ms/vs/16/release/VC_redist.x86.exe"
 
 APACHE_MODULES="access_compat authz_core dir env log_config mime rewrite setenvif"
@@ -45,13 +45,13 @@ function copyruntimelibs() {
 if [ ! -e "./upx" ]; then
     echo "Please place an up-to-date upx binary (Version 4) in this directory"
     echo "See https://github.com/upx/upx/releases/ or "
-    echo "https://github.com/upx/upx-automatic-builds/branches"
+    echo "https://github.com/upx/upx/actions"
     exit
 fi
 
 if [ $(./upx -V |head -n 1|cut -c 5) != 4 ]; then
     echo "Version 4 of UPX is needed. You probably need a devel release"
-    echo "See https://github.com/upx/upx-automatic-builds/branches"
+    echo "See https://github.com/upx/upx/actions"
     exit
 fi
 
