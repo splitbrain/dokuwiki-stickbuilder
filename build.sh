@@ -3,6 +3,7 @@
 APACHE_ZIP="https://www.apachelounge.com/download/VS16/binaries/httpd-2.4.52-win32-VS16.zip"
 PHP_ZIP="https://windows.php.net/downloads/releases/php-7.4.28-Win32-vc15-x86.zip"
 VC_EXE="https://aka.ms/vs/16/release/VC_redist.x86.exe"
+UPX_ZIP="https://nightly.link/upx/upx/workflows/ci/devel/amd64-linux-gcc-10.zip"
 
 APACHE_MODULES="access_compat authz_core dir env log_config mime rewrite setenvif"
 PHP_EXTENSIONS="bz2 gd2 ldap mbstring opcache openssl pdo_sqlite"
@@ -41,38 +42,22 @@ function copyruntimelibs() {
     done
 }
 
-# an up-to-date upx is preferable now that development has started again
-if [ ! -e "./upx" ]; then
-    echo "Please place an up-to-date upx binary (Version 4) in this directory"
-    echo "See https://github.com/upx/upx/releases/ or "
-    echo "https://github.com/upx/upx/actions"
-    exit
-fi
-
-if [ $(./upx -V |head -n 1|cut -c 5) != 4 ]; then
-    echo "Version 4 of UPX is needed. You probably need a devel release"
-    echo "See https://github.com/upx/upx/actions"
-    exit
-fi
-
-
-
-if ! command -v cabextract >/dev/null 2>&1; then
-    echo "Please install the cabextract utility"
-    exit
-fi
-
-if ! command -v objdump >/dev/null 2>&1; then
-    echo "Please install the objdump utility"
-    exit
-fi
-
-
 # we use previously downloaded files, but we warn about it
 if [ -d "tmp" ]; then
     echo "WARNING: tmp exist, previous downloads will be used. Abort and delete tmp for fresh sources."
     echo -n "[Enter]"
     read
+fi
+mkdir -p tmp
+
+if ! command -v cabextract >/dev/null 2>&1; then
+    echo "Please install the cabextract utility"
+    exit 1
+fi
+
+if ! command -v objdump >/dev/null 2>&1; then
+    echo "Please install the objdump utility"
+    exit 1
 fi
 
 # clean up
@@ -81,7 +66,6 @@ if [ -d "out" ]; then
 fi
 
 # create folders
-mkdir -p tmp
 mkdir -p out
 mkdir -p out/server
 mkdir -p out/server/modules
@@ -150,8 +134,3 @@ for EXT in $PHP_EXTENSIONS; do
     copyruntimelibs "tmp/php/ext/php_$EXT.dll"
 done
 
-# compress files
-./upx out/server/*.dll
-./upx out/server/*.exe
-./upx out/server/modules/*.so
-./upx out/server/php/ext/*

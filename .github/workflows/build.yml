@@ -1,0 +1,30 @@
+name: 'build'
+
+on: [push]
+
+jobs:
+  run:
+    name: 'build'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Prequisites
+        run: |
+          export DEBIAN_FRONTEND=noninteractive
+          sudo apt-get update
+          sudo apt-get install -y cabextract binutils
+      - name: Run Build Script
+        run: ./build.sh
+      - name: 'Upload artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: stickserver
+          path: out
+      - name: Run UPX compression
+        run: ./compress.sh
+      - name: 'Upload artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: stickserver-upx
+          path: out
