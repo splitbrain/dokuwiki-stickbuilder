@@ -29,7 +29,7 @@ echo To stop DokuWiki on a Stick
 pause
  
 :stop
-ApacheKill.exe
+taskkill /im mapache.exe /f /t
 echo ... DokuWiki on a Stick stopped.
 echo You can close this window now.
  
