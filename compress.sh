@@ -1,25 +1,26 @@
 #!/bin/bash
 
-UPX_ZIP="https://nightly.link/upx/upx/workflows/ci/devel/amd64-linux-gcc-10.zip"
+UPX_VER=4.1.0
+UPX_TAR="https://github.com/upx/upx/releases/download/v${UPX_VER}/upx-${UPX_VER}-amd64_linux.tar.xz"
 
 # download upx
 if [ ! -e "./upx" ]; then
-    if [ ! -f "tmp/upx.zip" ]; then
-        wget "$UPX_ZIP" -O tmp/upx.zip
+    if [ ! -f "tmp/upx.tar.xz" ]; then
+        wget "$UPX_TAR" -O tmp/upx.tar.xz
     fi
     if [ -d "tmp/upx" ]; then
         rm -rf tmp/upx
     fi
     cd tmp || exit
-        unzip upx.zip
+        tar -xf upx.tar.xz --strip-components=1 upx-$UPX_VER-amd64_linux/upx
         cp upx ..
         chmod 755 ../upx
     cd ..
 fi
 
 if [ $(./upx -V |head -n 1|cut -c 5) != 4 ]; then
-    echo "Version 4 of UPX is needed. You probably need a devel release"
-    echo "See https://github.com/upx/upx/actions"
+    echo "UPX version >=4 is needed."
+    echo "See https://github.com/upx/upx/releases/latest"
     exit 1
 fi
 
