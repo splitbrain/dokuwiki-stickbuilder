@@ -1,9 +1,8 @@
 #!/bin/bash
 
-APACHE_ZIP="https://www.apachelounge.com/download/VS16/binaries/httpd-2.4.52-win32-VS16.zip"
-PHP_ZIP="https://windows.php.net/downloads/releases/php-7.4.28-Win32-vc15-x86.zip"
-VC_EXE="https://aka.ms/vs/16/release/VC_redist.x86.exe"
-UPX_ZIP="https://nightly.link/upx/upx/workflows/ci/devel/amd64-linux-gcc-10.zip"
+APACHE_ZIP="https://www.apachelounge.com/download/VS17/binaries/httpd-2.4.57-win32-VS17.rar"
+PHP_ZIP="https://phpdev.toolsforresearch.com/php-7.4.33-Win32-vc15-x86.zip"
+VC_EXE="https://aka.ms/vs/17/release/VC_redist.x86.exe"
 
 APACHE_MODULES="access_compat authz_core dir env log_config mime rewrite setenvif"
 PHP_EXTENSIONS="bz2 gd2 ldap mbstring opcache openssl pdo_sqlite"
@@ -76,8 +75,8 @@ mkdir -p out/server/php/ext
 cp -r tpl/* out/
 
 # download and unpack Apache, PHP and the Visual Studio Redistributable
-if [ ! -f "tmp/apache.zip" ]; then
-    wget --user-agent="" "$APACHE_ZIP" -O tmp/apache.zip
+if [ ! -f "tmp/apache.rar" ]; then
+    wget --user-agent="" "$APACHE_ZIP" -O tmp/apache.rar
 fi
 if [ ! -f "tmp/php.zip" ]; then
     wget "$PHP_ZIP" -O tmp/php.zip
@@ -99,7 +98,7 @@ fi
 
 # unpack sources
 cd tmp || exit
-    unzip apache.zip
+    unrar x apache.rar
     mv Apache[0-9][0-9] apache
     rm -f ReadMe.txt
     rm -f -- --*
