@@ -13,7 +13,7 @@ jobs:
         run: |
           export DEBIAN_FRONTEND=noninteractive
           sudo apt-get update
-          sudo apt-get install -y cabextract binutils
+          sudo apt-get install -y cabextract binutils unrar
       - name: Run Build Script
         run: ./build.sh
       - name: 'Upload artifact'
