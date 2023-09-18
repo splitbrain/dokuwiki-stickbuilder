@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Install Prequisites
         run: |
           export DEBIAN_FRONTEND=noninteractive
@@ -17,14 +17,14 @@ jobs:
       - name: Run Build Script
         run: ./build.sh
       - name: 'Upload artifact'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: stickserver
           path: out
       - name: Run UPX compression
         run: ./compress.sh
       - name: 'Upload artifact'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: stickserver-upx
           path: out
