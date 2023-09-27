@@ -5,7 +5,7 @@ PHP_ZIP="https://windows.php.net/downloads/releases/php-8.2.10-Win32-vs16-x64.zi
 VC_EXE="https://aka.ms/vs/17/release/VC_redist.x64.exe"
 
 APACHE_MODULES="access_compat authz_core dir env log_config mime rewrite setenvif"
-PHP_EXTENSIONS="bz2 gd2 intl ldap mbstring opcache openssl pdo_sqlite"
+PHP_EXTENSIONS="bz2 gd intl ldap mbstring opcache openssl pdo_sqlite"
 
 # Try to identify the DLLs that the given binary needs and copy them from
 # the VC redistributable and the binary's own folder. Check dpendencies of
