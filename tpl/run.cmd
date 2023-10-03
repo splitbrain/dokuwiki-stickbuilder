@@ -25,7 +25,10 @@ if exist ..\dokuwiki\conf\local.php (
 )
  
 :wait
-echo To stop DokuWiki on a Stick
+echo Close this window to stop DokuWiki on a Stick.
+echo.
+echo If the window does not close you need to force close the Apache server.
+echo To force close the server
 pause
  
 :stop
