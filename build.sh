@@ -118,6 +118,7 @@ cd ..
 # copy Apache
 cp tmp/apache/LICENSE.txt                   out/server/apache-license.txt
 cp tmp/apache/bin/httpd.exe                 out/server/mapache.exe
+cp tmp/apache/conf/mime.types               out/server/conf/mime.types
 copyruntimelibs tmp/apache/bin/httpd.exe
 for MOD in $APACHE_MODULES; do
     cp "tmp/apache/modules/mod_$MOD.so" "out/server/modules/"
