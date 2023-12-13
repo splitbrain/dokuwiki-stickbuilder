@@ -28,7 +28,7 @@ function copyruntimelibs() {
         LLC=$(echo "$LC" | tr '-' '_')
         PSELF="$SELF/.."
 
-        for ORG in "$SELF/$DLL" "$PSELF/$DLL" "tmp/vc/$LC" "tmp/vc/$LLC"; do
+        for ORG in "$SELF/$DLL" "$PSELF/$DLL" "tmp/vc/$LC" "tmp/vc/$LLC" "tmp/vc/${LC}_amd64" "tmp/vc/${LLC}_amd64"; do
             if [ -e "$ORG" ]; then
                 if [ ! -e "out/server/$DLL" ]; then
                     # copy the DLL
