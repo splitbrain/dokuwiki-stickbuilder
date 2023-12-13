@@ -1,7 +1,7 @@
 #!/bin/bash
 
-APACHE_ZIP="https://www.apachelounge.com/download/VS17/binaries/httpd-2.4.57-win64-VS17.zip"
-PHP_ZIP="https://windows.php.net/downloads/releases/php-8.2.11-Win32-vs16-x64.zip"
+APACHE_ZIP="https://www.apachelounge.com/download/VS17/binaries/httpd-2.4.58-win64-VS17.zip"
+PHP_ZIP="https://windows.php.net/downloads/releases/php-8.2.13-Win32-vs16-x64.zip"
 VC_EXE="https://aka.ms/vs/17/release/VC_redist.x64.exe"
 
 APACHE_MODULES="access_compat authz_core dir env log_config mime rewrite setenvif"
