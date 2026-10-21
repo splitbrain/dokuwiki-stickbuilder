@@ -1,8 +1,8 @@
 #!/bin/bash
 
-APACHE_ZIP="https://www.apachelounge.com/download/VS17/binaries/httpd-2.4.58-win64-VS17.zip"
-PHP_ZIP="https://windows.php.net/downloads/releases/php-8.2.13-Win32-vs16-x64.zip"
-VC_EXE="https://aka.ms/vs/17/release/VC_redist.x64.exe"
+APACHE_ZIP="https://www.apachelounge.com/download/VS18/binaries/httpd-2.4.69-261002-Win64-VS18.zip"
+PHP_ZIP="https://downloads.php.net/~windows/releases/archives/php-8.4.27-Win32-vs17-x64.zip"
+VC_EXE="https://aka.ms/vs/18/release/VC_redist.x64.exe"
 
 APACHE_MODULES="access_compat authz_core dir env log_config mime rewrite setenvif"
 PHP_EXTENSIONS="bz2 ldap gd intl mbstring opcache openssl pdo_sqlite"
